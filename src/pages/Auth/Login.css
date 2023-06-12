@@ -1,0 +1,85 @@
+.contain {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-groups {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.login-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    gap: 10px;
+}
+
+.login-labels label {
+    font-size: 25px;
+}
+
+.login-labels input {
+    height: 50px;
+    width: 250px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+
+.login-controllers input {
+    margin-top: 6px;
+    min-width: 18em;
+    height: 37px;
+    padding: 0px 10px;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f3f3f3;
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 31px;
+    transition: all 250ms ease-in-out;
+}
+
+.login-controllers input:focus {
+    outline: none;
+    box-shadow: 0px 0px 12px 0.8px #4caf50;
+}
+
+.login-button {
+    margin-top: 1em;
+    width: 100%;
+    max-width: 18em;
+    height: 37px;
+    font-size: 32px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #4caf50;
+    color: #fff;
+    border: 0;
+    height: 60px;
+    width: 250px;
+    border-radius: 4px;
+    transition: background-color 250ms ease-in-out;
+}
+
+.login-button:hover {
+    background-color: #f685ab;
+}
+
+.login-button:disabled {
+    background-color: #a29797;
+    cursor: not-allowed;
+}
