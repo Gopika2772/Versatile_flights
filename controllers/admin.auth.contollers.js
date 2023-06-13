@@ -2,7 +2,7 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 
 
-export const register = (req, res) => {
+const adminRegister = (req, res) => {
     var q = "SELECT * FROM admin WHERE email = ? OR adminName = ? OR adminId=?";
 
     db.query(q, [req.body.email, req.body.adminName, req.body.adminId], (err, data) => {
@@ -22,7 +22,7 @@ export const register = (req, res) => {
         });
     });
 }
-export const login = (req, res) => {
+const adminLogin = (req, res) => {
     const query = "SELECT * FROM  admin WHERE adminId=? OR adminName=? "
     db.query(q, [req.body.adminName, req.body.adminId], (err, data) => {
         if (err) return res.status(500).json(err);
@@ -40,3 +40,51 @@ export const login = (req, res) => {
             return res.status(400).json("Wrong  Admin username or password!");
     });
 };
+
+
+// export const addAdmin = (req, res) => {
+
+//     const q =
+//         "INSERT INTO admin(`adminId`,`adminName`,`email`,`password`) VALUES (?)";
+
+//     const values = [
+//         req.body.adminId,
+//         req.body.adminName,
+//         req.body.email,
+//         req.body.password,
+//     ];
+//     db.query(q, [values], (err, data) => {
+//         if (err) {
+//             console.log(err);
+//             return res.status(500).json(err);
+//         } else {
+//             return res.json("admin added");
+//         }
+//     });
+// };
+
+// export const updateAdmin = (req, res) => {
+
+//     const q =
+//         "UPDATE admin SET `adminId`=?,`adminName`=?,`email`=?,`password`=?";
+
+//     const values = [req.body.adminId, req.body.adminName, req.body.email, req.body.password];
+
+//     db.query(q, [values], (err, data) => {
+//         if (err) return res.status(500).json(err);
+//         return res.json("Admin details updated.");
+//     });
+// };
+
+// export const deleteAdmin = (req, res) => {
+//     const q = "DELETE FROM admin WHERE `adminId` = ?";
+
+//     db.query(q, [req.body.adminId], (err, data) => {
+//         if (err) return res.status(403).json("Admin not deleted");
+
+//         return res.json("Admin deleted");
+//     });
+
+// };
+
+module.exports = { adminRegister, adminLogin }

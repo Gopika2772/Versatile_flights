@@ -2,7 +2,7 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 
 
-export const register = (req, res) => {
+const userRegister = (req, res) => {
     var q = "SELECT * FROM user WHERE email = ? OR username = ?";
 
     db.query(q, [req.body.email, req.body.username], (err, data) => {
@@ -22,7 +22,7 @@ export const register = (req, res) => {
         });
     });
 }
-export const login = (req, res) => {
+const userLogin = (req, res) => {
     const query = "SELECT * FROM  user WHERE email=? "
     db.query(q, [req.body.username], (err, data) => {
         if (err) return res.status(500).json(err);
@@ -38,3 +38,4 @@ export const login = (req, res) => {
             return res.status(400).json("Wrong username or password!");
     });
 };
+module.exports = { userRegister, userLogin }
